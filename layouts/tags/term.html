@@ -1,0 +1,34 @@
+{{ define "main" }}
+{{- $paginator := .Paginate .Pages -}}
+
+<h1 class="page-title">#{{ .Title }}</h1>
+
+<ul class="post-list">
+  {{- range $paginator.Pages }}
+  {{- $postURL := .RelPermalink }}
+  <li class="post-list-item">
+    <h2 class="post-list-title">
+      <a href="{{ $postURL }}">{{ .Title }}</a>
+    </h2>
+    <div class="post-list-meta">
+      <time datetime="{{ .Date.Format "2006-01-02" }}">{{ .Date.Format ($.Site.Params.dateFormat | default "2006-01-02") }}</time>
+    </div>
+    {{- with .Params.summary }}
+    <div class="post-list-summary">
+      {{ . }} <a href="{{ $postURL }}">→</a>
+    </div>
+    {{- else }}
+    {{- with .Summary }}
+    <div class="post-list-summary">
+      {{ . | plainify | truncate 160 }} <a href="{{ $postURL }}">→</a>
+    </div>
+    {{- end }}
+    {{- end }}
+  </li>
+  {{- end }}
+</ul>
+
+{{- if gt $paginator.TotalPages 1 }}
+{{- partial "pagination.html" $paginator -}}
+{{- end }}
+{{ end }}

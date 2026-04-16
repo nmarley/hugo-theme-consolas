@@ -367,6 +367,11 @@ a.post-nav-link:hover {
     content: "#";
 }
 
+.tag-count {
+    color: var(--fg-muted);
+    font-size: 0.75rem;
+}
+
 .site-footer {
     border-top: 1px solid var(--border);
     padding: var(--space-lg) 0;
