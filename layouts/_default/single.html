@@ -1,8 +1,41 @@
 {{ define "main" }}
 <article>
-  <h1 class="page-title">{{ .Title }}</h1>
+  <header>
+    <h1 class="page-title">{{ .Title }}</h1>
+    {{- if or (not .Date.IsZero) .Params.tags }}
+    <div class="post-meta">
+      {{- if not .Date.IsZero }}
+      <time datetime="{{ .Date.Format "2006-01-02" }}">{{ .Date.Format (.Site.Params.dateFormat | default "2006-01-02") }}</time>
+      {{- end }}
+      {{- with .Params.tags }}
+      <span class="post-tags">
+        {{- range . }} <a href="{{ absURL (printf "tags/%s/" .) }}">#{{ . }}</a>{{ end }}
+      </span>
+      {{- end }}
+    </div>
+    {{- end }}
+  </header>
+
   <div class="article-content">
     {{ .Content }}
   </div>
+
+  {{- if eq .Section "posts" }}
+  <nav class="post-nav" aria-label="Post navigation">
+    <hr>
+    <div class="post-nav-inner">
+      {{- with .PrevInSection }}
+      <a class="post-nav-link post-nav-prev" href="{{ .RelPermalink }}">← {{ .Title }}</a>
+      {{- else }}
+      <span class="post-nav-link post-nav-prev"></span>
+      {{- end }}
+      {{- with .NextInSection }}
+      <a class="post-nav-link post-nav-next" href="{{ .RelPermalink }}">{{ .Title }} →</a>
+      {{- else }}
+      <span class="post-nav-link post-nav-next"></span>
+      {{- end }}
+    </div>
+  </nav>
+  {{- end }}
 </article>
 {{ end }}

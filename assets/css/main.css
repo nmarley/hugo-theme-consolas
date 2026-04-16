@@ -326,6 +326,34 @@ th {
     color: var(--fg-link-hover);
 }
 
+.post-nav {
+    margin-top: var(--space-xl);
+}
+
+.post-nav-inner {
+    display: flex;
+    justify-content: space-between;
+    gap: var(--space-md);
+    font-size: 0.8125rem;
+}
+
+.post-nav-link {
+    flex: 1;
+    color: var(--fg-muted);
+}
+
+.post-nav-prev {
+    text-align: left;
+}
+
+.post-nav-next {
+    text-align: right;
+}
+
+a.post-nav-link:hover {
+    color: var(--fg-link-hover);
+}
+
 .tag-list {
     list-style: none;
     padding: 0;
@@ -382,5 +410,14 @@ th {
 
     .pagination {
         flex-wrap: wrap;
+    }
+
+    .post-nav-inner {
+        flex-direction: column;
+        gap: var(--space-sm);
+    }
+
+    .post-nav-next {
+        text-align: left;
     }
 }
