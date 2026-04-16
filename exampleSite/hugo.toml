@@ -4,7 +4,7 @@ title = "ngmarley.com"
 theme = "hugo-theme-consolas"
 
 [pagination]
-  pagerSize = 10
+  pagerSize = 3
 
 [taxonomies]
   tag = "tags"

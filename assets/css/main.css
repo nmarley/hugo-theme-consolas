@@ -298,6 +298,16 @@ th {
     font-weight: 700;
 }
 
+.pagination-disabled {
+    color: var(--border);
+}
+
+.site-description {
+    color: var(--fg-muted);
+    font-size: 0.875rem;
+    margin-bottom: 0;
+}
+
 .article-content {
     margin-top: var(--space-md);
 }

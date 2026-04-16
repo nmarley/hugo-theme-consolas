@@ -1,4 +1,45 @@
 {{ define "main" }}
-<h1 class="page-title">{{ .Site.Title }}</h1>
-<p>{{ .Site.Params.description }}</p>
+{{- $posts := where .Site.RegularPages "Section" "posts" -}}
+{{- $paginator := .Paginate $posts -}}
+
+{{- if .IsHome }}
+{{- if not $paginator.HasPrev }}
+<p class="site-description">{{ .Site.Params.description }}</p>
+<hr>
+{{- end }}
+{{- end }}
+
+<ul class="post-list">
+  {{- range $paginator.Pages }}
+  {{- $postURL := .RelPermalink }}
+  <li class="post-list-item">
+    <h2 class="post-list-title">
+      <a href="{{ $postURL }}">{{ .Title }}</a>
+    </h2>
+    <div class="post-list-meta">
+      <time datetime="{{ .Date.Format "2006-01-02" }}">{{ .Date.Format ($.Site.Params.dateFormat | default "2006-01-02") }}</time>
+      {{- with .Params.tags }}
+      <span class="post-tags">
+        {{- range . }} <a href="{{ absURL (printf "tags/%s/" .) }}">#{{ . }}</a>{{ end }}
+      </span>
+      {{- end }}
+    </div>
+    {{- with .Params.summary }}
+    <div class="post-list-summary">
+      {{ . }} <a href="{{ $postURL }}">→</a>
+    </div>
+    {{- else }}
+    {{- with .Summary }}
+    <div class="post-list-summary">
+      {{ . | plainify | truncate 160 }} <a href="{{ $postURL }}">→</a>
+    </div>
+    {{- end }}
+    {{- end }}
+  </li>
+  {{- end }}
+</ul>
+
+{{- if gt $paginator.TotalPages 1 }}
+{{- partial "pagination.html" $paginator -}}
+{{- end }}
 {{ end }}

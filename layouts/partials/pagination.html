@@ -1,0 +1,22 @@
+{{- $pag := . -}}
+<nav class="pagination" aria-label="Pagination">
+  {{- if $pag.HasPrev }}
+  <a href="{{ $pag.Prev.URL }}">← Prev</a>
+  {{- else }}
+  <span class="pagination-disabled">← Prev</span>
+  {{- end }}
+
+  {{- range $pag.Pagers }}
+    {{- if eq . $pag }}
+  <span class="active-page">{{ .PageNumber }}</span>
+    {{- else }}
+  <a href="{{ .URL }}">{{ .PageNumber }}</a>
+    {{- end }}
+  {{- end }}
+
+  {{- if $pag.HasNext }}
+  <a href="{{ $pag.Next.URL }}">Next →</a>
+  {{- else }}
+  <span class="pagination-disabled">Next →</span>
+  {{- end }}
+</nav>
