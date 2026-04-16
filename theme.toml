@@ -1,7 +1,3 @@
-[author]
-  name = "Nathan Marley"
-  homepage = "https://ngmarley.com"
-
 name = "Consolas"
 license = "MIT"
 licenselink = "https://github.com/nmarley/hugo-theme-consolas/blob/master/LICENSE"
@@ -10,3 +6,7 @@ homepage = "https://github.com/nmarley/hugo-theme-consolas"
 tags = ["blog", "dark", "minimal", "monospace", "personal"]
 features = ["blog", "dark-mode", "monospace", "responsive", "tags"]
 min_version = "0.128.0"
+
+[author]
+  name = "Nathan Marley"
+  homepage = "https://ngmarley.com"
