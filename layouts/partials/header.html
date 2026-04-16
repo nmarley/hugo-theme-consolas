@@ -5,7 +5,8 @@
     <nav class="site-nav">
       {{- range $i, $e := . -}}
         {{- if $i }} <span class="sep">|</span> {{ end -}}
-        <a href="{{ .URL }}"{{ if $.IsMenuCurrent "main" . }} class="active"{{ end }}>{{ .Name }}</a>
+        {{- $active := or ($.IsMenuCurrent "main" .) ($.HasMenuCurrent "main" .) (eq $.RelPermalink .URL) (hasPrefix $.RelPermalink .URL) -}}
+        <a href="{{ .URL }}"{{ if $active }} class="active"{{ end }}>{{ .Name }}</a>
       {{- end }}
     </nav>
     {{- end }}
