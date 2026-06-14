@@ -15,7 +15,7 @@
       <time datetime="{{ .Date.Format "2006-01-02" }}">{{ .Date.Format ($.Site.Params.dateFormat | default "2006-01-02") }}</time>
       {{- with .Params.tags }}
       <span class="post-tags">
-        {{- range . }} <a href="{{ absURL (printf "tags/%s/" .) }}">#{{ . }}</a>{{ end }}
+        {{- range . }} <a href="{{ absURL (printf "tags/%s/" .) }}">{{ . }}</a>{{ end }}
       </span>
       {{- end }}
     </div>
