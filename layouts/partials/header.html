@@ -1,6 +1,11 @@
 <header class="site-header">
   <div class="container header-inner">
-    <a href="{{ .Site.BaseURL }}" class="site-title">{{ .Site.Title }}</a>
+    <div class="header-title">
+      <a href="{{ .Site.BaseURL }}" class="site-title">{{ .Site.Title }}</a>
+      {{- with .Site.Params.description }}
+      <span class="site-description">{{ . }}</span>
+      {{- end }}
+    </div>
     {{- with .Site.Menus.main }}
     <nav class="site-nav">
       {{- range $i, $e := . -}}

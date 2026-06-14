@@ -2,13 +2,6 @@
 {{- $posts := where .Site.RegularPages "Section" "posts" -}}
 {{- $paginator := .Paginate $posts -}}
 
-{{- if .IsHome }}
-{{- if not $paginator.HasPrev }}
-<p class="site-description">{{ .Site.Params.description }}</p>
-<hr>
-{{- end }}
-{{- end }}
-
 <ul class="post-list">
   {{- range $paginator.Pages }}
   {{- $postURL := .RelPermalink }}

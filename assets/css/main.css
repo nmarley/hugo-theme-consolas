@@ -73,6 +73,12 @@ a:hover {
     justify-content: space-between;
 }
 
+.header-title {
+    display: flex;
+    align-items: baseline;
+    gap: var(--space-sm);
+}
+
 .site-title {
     font-size: 1rem;
     font-weight: 700;
@@ -82,6 +88,11 @@ a:hover {
 
 .site-title:hover {
     color: var(--fg-link-hover);
+}
+
+.site-header .site-description {
+    color: var(--fg-muted);
+    font-size: 0.8125rem;
 }
 
 .site-nav {
@@ -108,7 +119,7 @@ a:hover {
 
 main {
     flex: 1;
-    padding-top: var(--space-xl);
+    padding-top: var(--space-lg);
     padding-bottom: var(--space-xl);
 }
 
@@ -406,6 +417,10 @@ a.post-nav-link:hover {
     .header-inner {
         flex-direction: column;
         gap: var(--space-sm);
+    }
+
+    .header-title {
+        flex-wrap: wrap;
     }
 
     .footer-inner {
