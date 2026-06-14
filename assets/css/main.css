@@ -76,7 +76,7 @@ a:hover {
 .header-title {
     display: flex;
     align-items: baseline;
-    gap: var(--space-sm);
+    gap: var(--space-md);
 }
 
 .site-title {
