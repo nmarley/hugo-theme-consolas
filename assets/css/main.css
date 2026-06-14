@@ -60,8 +60,8 @@ a:hover {
 }
 
 .site-header {
-    padding-top: var(--space-lg);
-    padding-bottom: var(--space-lg);
+    padding-top: var(--space-md);
+    padding-bottom: var(--space-md);
     border-bottom: 1px solid var(--border);
 }
 
